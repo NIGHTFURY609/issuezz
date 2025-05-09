@@ -56,12 +56,24 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+<ClerkProvider
+      appearance={{
+        baseTheme: undefined,
+        variables: { colorPrimary: '#4f46e5' },
+        elements: {
+          formButtonPrimary: 
+            'bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700',
+          card: 'bg-white dark:bg-slate-900',
+          headerTitle: 'text-indigo-500',
+          headerSubtitle: 'text-slate-700'
+        }
+      }}
+    >
       <html lang="en">
         <body className={`${josefinSans.variable} ${urbanist.variable} ${noto.variable} ${roboto.variable} ${oswald.variable} antialiased ${geistSans.variable} ${geistMono.variable}`}>
           <header className="flex justify-end items-center p-4 gap-4 h-16 bg-orange-300">
@@ -95,7 +107,7 @@ export default function RootLayout({
               />
             </SignedIn>
           </header>
-          <main>{children}</main>
+          {children}
         </body>
       </html>
     </ClerkProvider>
