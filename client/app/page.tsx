@@ -1,28 +1,37 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth, useClerk } from '@clerk/nextjs';
+import Link from 'next/link';
 import { GitBranch, Zap, Code2 } from 'lucide-react';
 
-export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);  // Initially set to false to prevent mismatch.
-  const router = useRouter();
 
-  //to avoid hydration
+const MainPage: React.FC = () => {
+  const [isMounted, setIsMounted] = useState(false); // For hydration mismatch
+  const router = useRouter();
+  const { isSignedIn, isLoaded } = useAuth()
+  const { openSignIn } = useClerk();
+
   useEffect(() => {
-    setIsMounted(true);  
+    setIsMounted(true);
   }, []);
 
-  if (!isMounted) {
-    return null; 
-  }
+  if (!isMounted) return null;
 
   const handleGetStarted = () => {
-    router.push('/features');
+    if (isLoaded) {
+      router.push(isSignedIn ? '/features' : '/sign-in');
+    }
   };
+ 
+
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white flex items-center justify-center overflow-hidden relative">
       
+
+
       {/* Subtle grid background */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:30px_30px]"></div>
@@ -54,7 +63,7 @@ export default function Home() {
             <div className="relative w-64 h-64">
               <div className="absolute -inset-4 bg-indigo-500/20 rounded-2xl blur-xl"></div>
               <img
-                src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
+                src="/images/github.png"
                 alt="GitHub Collaboration"
                 className="relative z-10 rounded-xl shadow-xl border border-indigo-500/30 
                 hover:scale-105 transition-transform duration-300 w-full h-full object-cover"
@@ -63,7 +72,7 @@ export default function Home() {
           </div>
 
           <h1 className="font-sans text-4xl md:text-5xl font-bold text-center md:text-left text-white">
-            ISSUEWIZ
+            ISSUEZZ
           </h1>
 
           <h2 className="font-sans text-xl md:text-3xl font-semibold text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-blue-400">
@@ -77,7 +86,16 @@ export default function Home() {
 
           <div className="flex justify-center md:justify-start space-x-4 pt-4">
             <button 
-              onClick={handleGetStarted}
+              type="button"
+              onClick={() => {
+                if (isLoaded) {
+                  if (isSignedIn) {
+                    router.push('/features');
+                  } else {
+                    openSignIn(); // opens modal instead of routing
+                  }
+                }
+              }}
               className="font-sans bg-gradient-to-r from-indigo-500 to-blue-600 text-white px-6 py-3 rounded-lg
               flex items-center space-x-2 
               hover:shadow-lg hover:translate-y-px transition-all duration-200 
@@ -104,3 +122,4 @@ export default function Home() {
     </div>
   );
 }
+export default MainPage;
