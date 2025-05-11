@@ -1,13 +1,13 @@
 # issuezz
 ### Project Description
-IssueWiz is an AI-powered platform designed to lower the barrier to entry for open-source contributions by providing intelligent issue analysis, personalized recommendations, and contextual documentation. The system helps both newcomers and experienced developers navigate complex codebases and find suitable issues to work on.
+Issuezz is an AI-powered platform designed to lower the barrier to entry for open-source contributions by providing intelligent issue analysis, personalized recommendations, and contextual documentation. The system helps both newcomers and experienced developers navigate complex codebases and find suitable issues to work on.
 
 
 ### The Problem statement
 Contributing to open-source projects can be challenging, especially for beginners, due to complex codebases, unclear documentation, and difficulty identifying relevant files. Even experienced developers struggle with narrowing down bugs and locating error files in large repositories. Without proper guidance, both beginners and experts end up spending more time searching than solving, making contributions inefficient.
 
 ### The Solution
-IssueWiz simplifies this process by providing the following:
+Issuezz simplifies this process by providing the following:
 
 - **Issue Analysis Engine** : Analyzes issues, identifies relevant files, and generates contextual documentation with interactive guidance.
 - **Skill-Based Issue Matcher** : Matches users' skills with suitable issues, providing ranked recommendations for both learning and contribution.
@@ -86,10 +86,10 @@ For Software:
 
 # Screenshots 
 ![image](https://github.com/user-attachments/assets/5cd41a5e-2a13-43f2-8a3f-f3183475561f)
-*issueWiz Landing Page*
+*issuezz Landing Page*
 
 ![image](https://github.com/user-attachments/assets/9a22aa07-a260-46ef-a091-e29d4f0a006b)
-*issueWiz features*
+*issuezz features*
 
 ![image](https://github.com/user-attachments/assets/7586f338-5bbf-4fc8-b916-b16d2bdf979e)
 *Repository analysis*
@@ -103,5 +103,5 @@ For Software:
 
 ### Project Demo
 # Video
-[Youtube - issueWiz - Bonito Flakes Tink-Her-Hack 3.0](https://www.youtube.com/watch?v=LsXWV6i_PTY)
+[Youtube](https://www.youtube.com/watch?v=LsXWV6i_PTY)
 
